@@ -17,7 +17,7 @@ namespace Matrix2D
             return HashCode.Combine(matrixValues);
         }
 
-        // --==## EQUALS ##==--
+        // --==## METHODS ##==--
         public override bool Equals(object obj)
         {
             // Check for null
@@ -43,6 +43,26 @@ namespace Matrix2D
                 this.matrixValues[0, 1] == other.matrixValues[0, 1] &&
                 this.matrixValues[1, 1] == other.matrixValues[1, 1]
                 );
+        }
+
+        public Matrix2D Parse(string matrix)
+        {
+            // Split string
+            string[] values = matrix.Split(','); // [[{0},{1}],[{2},{3}]]
+
+            // Discrad if string[] does not match expectations
+            if (values.Length != 4) throw new FormatException();
+            if (values[0].Length < 3 || values[1].Length < 2 || values[2].Length < 2 || values[3].Length < 3) throw new FormatException();
+
+            //Create double[] of values
+            double[] matrixValues = new double[4];
+            matrixValues[0] = double.Parse(values[0].Substring(2));
+            matrixValues[0] = double.Parse(values[0].Substring(2));
+            matrixValues[0] = double.Parse(values[0].Substring(2));
+            matrixValues[0] = double.Parse(values[0].Substring(2));
+
+            // Create new matrix 
+            return new Matrix2D();
         }
 
         // --==## OPERATORS ##==--
